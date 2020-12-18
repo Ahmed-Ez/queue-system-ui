@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react';
+import CardTest from './views/CardTest';
+import Login from './views/Login';
+import Navbar from './components/Navbar';
+import Register from './views/Register';
+import Queue from './views/Queue';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import wave from './imgs/wave.png';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <Navbar />
+        <img class="wave" src={wave} />
+        <Switch>
+          <Route path="/queue">
+            <Queue />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <CardTest />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
